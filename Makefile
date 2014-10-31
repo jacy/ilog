@@ -11,7 +11,7 @@ app:
 	sh log_roller_server.app.sh $(VERSION)
 	
 templates: app
-	erl -pa ebin deps/*/ebin ../deps/*/ebin -eval 'log_roller_server:compile_templates()' -s init stop -noshell
+	erl -pa ebin  -eval 'log_roller_server:compile_templates()' -s init stop -noshell
 	
 release/$(PKGNAME).rel release/$(PKGNAME).script release/$(PKGNAME).tar.gz:
 	mkdir -p release
