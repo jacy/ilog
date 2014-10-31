@@ -49,5 +49,5 @@
 -define(SET_CPROP(Continuation, Field, Value), Continuation#continuation{properties=(Continuation#continuation.properties)#cprops{Field=Value}}).
 -define(SET_CSTATE(Continuation, Field, Value), Continuation#continuation{state=(Continuation#continuation.state)#cstate{Field=Value}}).
 
--define(LOGGERS, 'LOGGER_SERVERS').
+-define(LOGGERS, log_roller_server).
 
