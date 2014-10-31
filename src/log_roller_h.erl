@@ -137,11 +137,13 @@ get_node(Other) ->
 	end.
 	
 commit(State, Log) ->
-	case pg2:get_members(log_roller_server) of
+	case pg2:get_members(?LOGGERS) of
 		{error, _Reason} ->
 			{ok, State};
 		Pids ->
-			[Pid ! {log_roller, self(), Log} || Pid <- Pids],
+			{_,_,X} = erlang:now(),
+            Pid = lists:nth((X rem length(Pids)) + 1, Pids),
+			Pid ! {log_roller, self(), Log},
 			{ok, State}
 	end.
 

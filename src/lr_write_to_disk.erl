@@ -79,8 +79,8 @@ get_cache_pid(Name) when is_atom(Name) ->
 %%--------------------------------------------------------------------
 init(LogConfig) when is_record(LogConfig, log_config) ->
 	State = initialize_state(LogConfig),
-	pg2:create(log_roller_server),
-	pg2:join(log_roller_server, self()),
+	pg2:create(?LOGGERS),
+	pg2:join(?LOGGERS, self()),
 	{ok, State}.
 
 %%--------------------------------------------------------------------

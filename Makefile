@@ -13,7 +13,7 @@ app:
 	sh log_roller_server.app.sh $(VERSION)
 	
 templates: emake
-	erl -pa ebin deps/*/ebin -eval -eval 'log_roller_server:compile_templates()' -s init stop -noshell
+	erl -pa ebin deps/*/ebin ../deps/*/ebin -eval -eval 'log_roller_server:compile_templates()' -s init stop -noshell
 	
 release/$(PKGNAME).rel release/$(PKGNAME).script release/$(PKGNAME).tar.gz:
 	mkdir -p release

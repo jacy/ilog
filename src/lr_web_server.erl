@@ -147,10 +147,10 @@ do_write_chunk(Resp, Logs) ->
     Resp:write_chunk(Content).
 
 default_server() ->
-	gen_server:call(hd(pg2:get_members(log_roller_server)), name, 5000).
+	gen_server:call(hd(pg2:get_members(?LOGGERS)), name, 5000).
 	
 tab_content(ServerName) ->
-	Names = [gen_server:call(Pid, name, 5000) || Pid <- pg2:get_members(log_roller_server)],
+	Names = [gen_server:call(Pid, name, 5000) || Pid <- pg2:get_members(?LOGGERS)],
 	lr_tabs:render({data, ServerName, Names}).
 
 opts([], Dict) -> 
